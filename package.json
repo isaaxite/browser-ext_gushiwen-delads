@@ -3,9 +3,25 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "zip": "cd ./dist/browser-ext_gushiwen-delads && zip -r ../browser-ext_gushiwen-delads.zip ./",
+    "build": "rm -rf ./dist && rollup --config && npm run zip && rm -rf ./dist/browser-ext_gushiwen-delads",
+    "watch": "rollup --watch --config",
+    "patch": "npm run build && npm version patch"
   },
   "author": "isaaxite",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "rollup": "^3.23.1",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-import-css": "^3.2.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-zip": "^1.0.3"
+  },
+  "dependencies": {
+    "tampermonkey-gusiwen_delads": "^1.0.6"
+  }
 }
